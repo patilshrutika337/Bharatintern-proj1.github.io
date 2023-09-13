@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Management</title>
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
+     
+    <style>
+        /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url(./socialimages/backtask.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    
+}
+
+.task-list {
+    flex: 2;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-box {
+    background-color: #f4f4f4;
+    border-radius: 20px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.task-form {
+     flex: 1;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+    
+}
+
+/* sidebar csss */
+/* styles.css */
+/* ... (previous styles) ... */
+
+.sidebar {
+    width: 90px;
+    height: 90px;
+    background-color:#FFFF4C;
+    color: #fff;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.friend-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+}
+.content .friend-list {
+    /* justify-content: space-between; */
+    background-color:#FFFF4C;
+}
+
+
+
+/* ... (remaining styles) ... */
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Task Management</h1>
+    </header>
+     <!--  sidebar -->
+   <div class="sidebar">
+    <h3>Friends Groups</h3>
+    <img src="./socialimages/member-5.png"  style="width:20px; border-radius:30px;">
+</div>
+<div class="content">
+    <div class="friend-list">
+        <img src="./socialimages/member-5.png"  style="height:20px; width=20px; border-radius:30px;">
+    </div>
+    <div class="friend-list">
+        <img src="./socialimages/member-5.png"  style="width:20px; border-radius: 30px;">
+    </div>
+    <!-- <div class="task-form">
+    </div> -->
+</div>
+    <main>
+        <div class="task-list">
+            <!-- Tasks will be displayed here -->
+        </div>
+        <div class="task-form">
+            <h2>Create New Task</h2>
+            <form id="newTaskForm">
+            <div>
+                 <br> <br> 
+                <label for="taskTitle">Task Title:</label>
+                <input type="text" id="taskTitle" name="taskTitle" required>
+            </div>
+              <br><br>
+                <div>
+                    <label for="taskDescription">Task Description:</label>
+                    <textarea id="taskDescription" name="taskDescription" rows="4" required></textarea>
+                </div>
+                <br><br>
+                <div>
+                    <label for="myfile">Insert your images & Documents</label>
+                    <input type="file" value="mfile" required>
+                </div>
+                 <br> <br>
+                  <div>
+                    <button type="submit">Post Task</button>
+                  </div>
+
+            </form>
+        </div>
+   
+    </main>
+   
+    <!-- <script src="script.js"></script> -->
+    <script>
+        // script.js
+document.addEventListener("DOMContentLoaded", () => {
+    const taskForm = document.getElementById("newTaskForm");
+    const taskList = document.querySelector(".task-list");
+
+    taskForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const taskTitle = document.getElementById("taskTitle").value;
+        const taskDescription = document.getElementById("taskDescription").value;
+
+        if (taskTitle && taskDescription) {
+            createTask(taskTitle, taskDescription);
+            taskForm.reset();
+        }
+    });
+
+    function createTask(title, description) {
+        const taskBox = document.createElement("div");
+        taskBox.classList.add("task-box");
+        taskBox.innerHTML = `
+            <h3>${title}</h3>
+            <p>${description}</p>
+        `;
+        taskList.appendChild(taskBox);
+    }
+});
+
+    </script>
+</body>
+</html>
